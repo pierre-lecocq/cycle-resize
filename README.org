@@ -30,6 +30,13 @@ And eventually, you can bind these keys to call the methods from your keyboard:
 (global-set-key (kbd "C-M-h") 'cycle-resize-window-horizontally)
 #+end_src
 
+You also can configure the dimensions (in %) the package will cycle through
+By default, it is: 80% -> 50% -> 20% -> 50%, and so on...
+
+#+begin_src emacs-lisp
+(setq cr/resize-steps '(80 50 20 50))
+#+end_src
+
 ** Demo
 
 [[cycle-resize.el.gif]]
