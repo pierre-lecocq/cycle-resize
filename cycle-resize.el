@@ -43,7 +43,7 @@
 
 ;;; Code:
 
-(defvar cr/resize-steps '(20 50 80 50)
+(defvar cr/resize-steps '(80 50 20 50)
   "The steps used to resize the current frame")
 
 (defun first-element-at-the-end(alist)
