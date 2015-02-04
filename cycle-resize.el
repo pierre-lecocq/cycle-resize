@@ -35,6 +35,11 @@
 ;;
 ;; (global-set-key (kbd "C-M-v") 'cycle-resize-window-vertically)
 ;; (global-set-key (kbd "C-M-h") 'cycle-resize-window-horizontally)
+;;
+;; You also can configure the dimensions (in %) the package will cycle through
+;; By default, it is: 80% -> 50% -> 20% -> 50%, and so on...
+;;
+;; (setq cr/resize-steps '(80 50 20 50))
 
 ;;; Change Log:
 ;;
