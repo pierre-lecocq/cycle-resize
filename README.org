@@ -1,0 +1,41 @@
+* Cycle resize
+
+/cycle-resize.el/ is a GNU/Emacs package that allows you to resize your window through a cycle of dimensions (20% -> 50% -> 80% -> 50% -> 20% ... and so on)
+
+** Install
+
+Just clone the /cycle-resize.el/ file in your emacs load-path.
+
+Note: /MELPA/ package coming soon ...
+
+** Usage
+
+In your init file, simply add:
+
+#+begin_src emacs-lisp
+(require 'cycle-resize)
+#+end_src
+
+Once you have at leat 2 windows, you can call interactive methods:
+
+#+begin_src emacs-lisp
+M-x cycle-resize-window-vertically
+M-x cycle-resize-window-horizontally
+#+end_src
+
+And eventually, you can bind these keys to call the methods from your keyboard:
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "C-M-v") 'cycle-resize-window-vertically)
+(global-set-key (kbd "C-M-h") 'cycle-resize-window-horizontally)
+#+end_src
+
+** Demo
+
+[[cycle-resize.el.gif]]
+
+** About
+
+- Version: 0.5.0 (beta)
+- Author: Pierre Lecocq
+- License: GPL2
