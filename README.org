@@ -1,6 +1,6 @@
 * Cycle resize
 
-/cycle-resize.el/ is a GNU/Emacs package that allows you to resize your window through a cycle of dimensions (20% -> 50% -> 80% -> 50% -> 20% ... and so on)
+/cycle-resize.el/ is a GNU/Emacs package that allows you to resize your window through a cycle of dimensions.
 
 ** Install
 
