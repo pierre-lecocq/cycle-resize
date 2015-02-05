@@ -43,7 +43,7 @@
 
 ;;; Change Log:
 ;;
-;; 201502-04
+;; 2015-02-04
 ;;    * First public release, beta version
 
 ;;; Code:
@@ -51,28 +51,26 @@
 (defvar cr/resize-steps '(80 50 20 50)
   "The steps used to resize the current frame")
 
-(defun first-element-at-the-end(alist)
+(defun first-element-at-the-end (alist)
   "Take the first element and place it at the end"
   (append (cdr alist) (list (car alist))))
 
-(defun cr/calculate-window-size(percentage direction)
+(defun cr/calculate-window-size (percentage direction)
   "Calculate the window size according to the frame size"
   (if (string= direction "vertical")
       (* (frame-height) (/ percentage 100.0))
     (* (frame-width) (/ percentage 100.0))))
 
-(defun cr/calculate-window-delta(new-size direction)
+(defun cr/calculate-window-delta (new-size direction)
   "Calculate the window delta according to the window size"
   (if (string= direction "vertical")
       (truncate (- new-size (window-body-height)))
     (truncate (- new-size (window-body-width)))))
 
-(defun cr/cycle-resize-window(direction)
+(defun cr/cycle-resize-window (direction)
   "Cycle resize the current window"
-
   (setq new-size (cr/calculate-window-size (car cr/resize-steps) direction))
   (setq delta (cr/calculate-window-delta new-size direction))
-
   (if (>= (length (window-list)) 2)
       (progn
         (if (string= direction "vertical")
@@ -81,12 +79,12 @@
         (setq cr/resize-steps (first-element-at-the-end cr/resize-steps)))
     (message "Not enough window to cycle resize")))
 
-(defun cycle-resize-window-vertically()
+(defun cycle-resize-window-vertically ()
   "Cycle resize vertically the current window"
   (interactive)
   (cr/cycle-resize-window "vertical"))
 
-(defun cycle-resize-window-horizontally()
+(defun cycle-resize-window-horizontally ()
   "Cycle resize horizontally the current window"
   (interactive)
   (cr/cycle-resize-window "horizontal"))
