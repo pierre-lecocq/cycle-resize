@@ -35,7 +35,7 @@ You also can configure the dimensions (in %) the package will cycle through
 By default, it is: 80% -> 50% -> 20% -> 50%, and so on...
 
 #+begin_src emacs-lisp
-(setq cycle-resize-resize-steps '(80 50 20 50))
+(setq cycle-resize-steps '(80 50 20 50))
 #+end_src
 
 ** Demo

@@ -39,7 +39,7 @@
 ;; You also can configure the dimensions (in %) the package will cycle through
 ;; By default, it is: 80% -> 50% -> 20% -> 50%, and so on...
 ;;
-;; (setq cycle-resize-resize-steps '(80 50 20 50))
+;; (setq cycle-resize-steps '(80 50 20 50))
 
 ;;; Change Log:
 ;;
@@ -52,7 +52,7 @@
 
 ;;; Code:
 
-(defvar cycle-resize-resize-steps '(80 50 20 50)
+(defvar cycle-resize-steps '(80 50 20 50)
   "The steps used to resize the current frame")
 
 (defun cycle-resize--first-element-at-the-end (alist)
@@ -73,14 +73,14 @@
 
 (defun cycle-resize--cycle-resize-window (direction)
   "Cycle resize the current window"
-  (setq new-size (cycle-resize--calculate-window-size (car cycle-resize-resize-steps) direction))
+  (setq new-size (cycle-resize--calculate-window-size (car cycle-resize-steps) direction))
   (setq delta (cycle-resize--calculate-window-delta new-size direction))
   (if (>= (length (window-list)) 2)
       (progn
         (if (string= direction "vertical")
             (enlarge-window delta)
           (enlarge-window-horizontally delta))
-        (setq cycle-resize-resize-steps (cycle-resize--first-element-at-the-end cycle-resize-resize-steps)))
+        (setq cycle-resize-steps (cycle-resize--first-element-at-the-end cycle-resize-steps)))
     (message "Not enough window to cycle resize")))
 
 (defun cycle-resize-window-vertically ()
