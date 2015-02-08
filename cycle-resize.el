@@ -39,55 +39,59 @@
 ;; You also can configure the dimensions (in %) the package will cycle through
 ;; By default, it is: 80% -> 50% -> 20% -> 50%, and so on...
 ;;
-;; (setq cr/resize-steps '(80 50 20 50))
+;; (setq cycle-resize-resize-steps '(80 50 20 50))
 
 ;;; Change Log:
+;;
+;; 2015-02-08
+;;    * Coding convention fixes thanks to Steve Purcell
+;;    * Melpa package is now available
 ;;
 ;; 2015-02-04
 ;;    * First public release, beta version
 
 ;;; Code:
 
-(defvar cr/resize-steps '(80 50 20 50)
+(defvar cycle-resize-resize-steps '(80 50 20 50)
   "The steps used to resize the current frame")
 
-(defun first-element-at-the-end (alist)
+(defun cycle-resize--first-element-at-the-end (alist)
   "Take the first element and place it at the end"
   (append (cdr alist) (list (car alist))))
 
-(defun cr/calculate-window-size (percentage direction)
+(defun cycle-resize--calculate-window-size (percentage direction)
   "Calculate the window size according to the frame size"
   (if (string= direction "vertical")
       (* (frame-height) (/ percentage 100.0))
     (* (frame-width) (/ percentage 100.0))))
 
-(defun cr/calculate-window-delta (new-size direction)
+(defun cycle-resize--calculate-window-delta (new-size direction)
   "Calculate the window delta according to the window size"
   (if (string= direction "vertical")
       (truncate (- new-size (window-body-height)))
     (truncate (- new-size (window-body-width)))))
 
-(defun cr/cycle-resize-window (direction)
+(defun cycle-resize--cycle-resize-window (direction)
   "Cycle resize the current window"
-  (setq new-size (cr/calculate-window-size (car cr/resize-steps) direction))
-  (setq delta (cr/calculate-window-delta new-size direction))
+  (setq new-size (cycle-resize--calculate-window-size (car cycle-resize-resize-steps) direction))
+  (setq delta (cycle-resize--calculate-window-delta new-size direction))
   (if (>= (length (window-list)) 2)
       (progn
         (if (string= direction "vertical")
             (enlarge-window delta)
           (enlarge-window-horizontally delta))
-        (setq cr/resize-steps (first-element-at-the-end cr/resize-steps)))
+        (setq cycle-resize-resize-steps (cycle-resize--first-element-at-the-end cycle-resize-resize-steps)))
     (message "Not enough window to cycle resize")))
 
 (defun cycle-resize-window-vertically ()
   "Cycle resize vertically the current window"
   (interactive)
-  (cr/cycle-resize-window "vertical"))
+  (cycle-resize--cycle-resize-window "vertical"))
 
 (defun cycle-resize-window-horizontally ()
   "Cycle resize horizontally the current window"
   (interactive)
-  (cr/cycle-resize-window "horizontal"))
+  (cycle-resize--cycle-resize-window "horizontal"))
 
 (provide 'cycle-resize)
 

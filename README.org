@@ -4,9 +4,10 @@
 
 ** Install
 
-Just clone the /cycle-resize.el/ file in your emacs load-path.
+A package is available on MELPA. To install it, simply type =M-x package-install RET cycle-resize=
 
-Note: /MELPA/ package coming soon ...
+Or, if you want to install it from the source repository, just clone the /cycle-resize.el/ file in your emacs load-path.
+
 
 ** Usage
 
@@ -34,7 +35,7 @@ You also can configure the dimensions (in %) the package will cycle through
 By default, it is: 80% -> 50% -> 20% -> 50%, and so on...
 
 #+begin_src emacs-lisp
-(setq cr/resize-steps '(80 50 20 50))
+(setq cycle-resize-resize-steps '(80 50 20 50))
 #+end_src
 
 ** Demo
