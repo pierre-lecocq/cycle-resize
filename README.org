@@ -1,5 +1,7 @@
 * Cycle resize
 
+[[http://melpa.org/#/cycle-resize][file:http://melpa.org/packages/cycle-resize-badge.svg]]
+
 /cycle-resize.el/ is a GNU/Emacs package that allows you to resize your window through a cycle of dimensions.
 
 ** Install
