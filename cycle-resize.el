@@ -1,4 +1,4 @@
-;;; cycle-resize.el --- cycle resize the current window horizontally or vertically
+;;; cycle-resize.el --- Cycle resize the current window horizontally or vertically
 
 ;; Copyright (C) 2015 Pierre Lecocq
 
@@ -17,7 +17,7 @@
 ;; Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 
 ;; Author: Pierre Lecocq
-;; URL: http://qsdfgh.com/
+;; URL: https://github.com/pierre-lecocq/cycle-resize
 ;; Version: 1.0 (stable)
 
 ;;; Commentary:
