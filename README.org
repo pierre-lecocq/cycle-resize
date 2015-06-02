@@ -46,6 +46,6 @@ By default, it is: 80% -> 50% -> 20% -> 50%, and so on...
 
 ** About
 
-- Version: 0.5.0 (beta)
+- Version: 1.0 (stable)
 - Author: Pierre Lecocq
 - License: GPL2

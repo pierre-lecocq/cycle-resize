@@ -18,7 +18,7 @@
 
 ;; Author: Pierre Lecocq
 ;; URL: http://qsdfgh.com/
-;; Version: 0.5.0
+;; Version: 1.0 (stable)
 
 ;;; Commentary:
 
@@ -43,6 +43,9 @@
 
 ;;; Change Log:
 ;;
+;; 2015-06-02
+;;    * Better code in order to avoid compilation errors
+;;
 ;; 2015-02-08
 ;;    * Coding convention fixes thanks to Steve Purcell
 ;;    * Melpa package is now available
@@ -53,7 +56,7 @@
 ;;; Code:
 
 (defvar cycle-resize-steps '(80 50 20 50)
-  "The steps used to resize the current frame")
+  "The steps used to resize the current frame.")
 
 (defun cycle-resize--first-element-at-the-end (alist)
   "Take the first element and place it at the end"
@@ -73,15 +76,15 @@
 
 (defun cycle-resize--cycle-resize-window (direction)
   "Cycle resize the current window"
-  (setq new-size (cycle-resize--calculate-window-size (car cycle-resize-steps) direction))
-  (setq delta (cycle-resize--calculate-window-delta new-size direction))
-  (if (>= (length (window-list)) 2)
-      (progn
-        (if (string= direction "vertical")
-            (enlarge-window delta)
-          (enlarge-window-horizontally delta))
-        (setq cycle-resize-steps (cycle-resize--first-element-at-the-end cycle-resize-steps)))
-    (message "Not enough window to cycle resize")))
+  (let* ((new-size (cycle-resize--calculate-window-size (car cycle-resize-steps) direction))
+         (delta (cycle-resize--calculate-window-delta new-size direction)))
+    (if (>= (length (window-list)) 2)
+        (progn
+          (if (string= direction "vertical")
+              (enlarge-window delta)
+            (enlarge-window-horizontally delta))
+          (setq cycle-resize-steps (cycle-resize--first-element-at-the-end cycle-resize-steps)))
+      (message "Not enough windows to cycle resize"))))
 
 (defun cycle-resize-window-vertically ()
   "Cycle resize vertically the current window"
