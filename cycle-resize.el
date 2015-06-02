@@ -59,23 +59,23 @@
   "The steps used to resize the current frame.")
 
 (defun cycle-resize--first-element-at-the-end (alist)
-  "Take the first element and place it at the end"
+  "Take the first element of ALIST and place it at the end."
   (append (cdr alist) (list (car alist))))
 
 (defun cycle-resize--calculate-window-size (percentage direction)
-  "Calculate the window size according to the frame size"
+  "Calculate the PERCENTAGE window size according to the frame size and DIRECTION."
   (if (string= direction "vertical")
       (* (frame-height) (/ percentage 100.0))
     (* (frame-width) (/ percentage 100.0))))
 
 (defun cycle-resize--calculate-window-delta (new-size direction)
-  "Calculate the window delta according to the window size"
+  "Calculate the window delta according to the window NEW-SIZE and DIRECTION."
   (if (string= direction "vertical")
       (truncate (- new-size (window-body-height)))
     (truncate (- new-size (window-body-width)))))
 
 (defun cycle-resize--cycle-resize-window (direction)
-  "Cycle resize the current window"
+  "Cycle resize the current window according to the DIRECTION."
   (let* ((new-size (cycle-resize--calculate-window-size (car cycle-resize-steps) direction))
          (delta (cycle-resize--calculate-window-delta new-size direction)))
     (if (>= (length (window-list)) 2)
@@ -87,12 +87,12 @@
       (message "Not enough windows to cycle resize"))))
 
 (defun cycle-resize-window-vertically ()
-  "Cycle resize vertically the current window"
+  "Cycle resize vertically the current window."
   (interactive)
   (cycle-resize--cycle-resize-window "vertical"))
 
 (defun cycle-resize-window-horizontally ()
-  "Cycle resize horizontally the current window"
+  "Cycle resize horizontally the current window."
   (interactive)
   (cycle-resize--cycle-resize-window "horizontal"))
 
