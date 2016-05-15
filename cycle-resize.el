@@ -86,11 +86,13 @@
           (setq cycle-resize-steps (cycle-resize--first-element-at-the-end cycle-resize-steps)))
       (message "Not enough windows to cycle resize"))))
 
+;;;###autoload
 (defun cycle-resize-window-vertically ()
   "Cycle resize vertically the current window."
   (interactive)
   (cycle-resize--cycle-resize-window "vertical"))
 
+;;;###autoload
 (defun cycle-resize-window-horizontally ()
   "Cycle resize horizontally the current window."
   (interactive)
